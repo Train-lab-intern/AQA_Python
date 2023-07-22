@@ -1,4 +1,4 @@
-from connection_db.conn import ssh_tunnel_and_db_connection
+from test_db.conn import ssh_tunnel_and_db_connection
 
 
 @ssh_tunnel_and_db_connection
