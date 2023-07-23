@@ -1,6 +1,6 @@
 import psycopg2
 from sshtunnel import SSHTunnelForwarder
-from headers import *
+from settings import *
 
 try:
     def ssh_tunnel_and_db_connection(func):

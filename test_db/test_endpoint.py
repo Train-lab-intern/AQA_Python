@@ -1,5 +1,5 @@
 import requests
-from test_db.query_from_db import *
+from query_from_db import *
 
 def test_response():
     url = 'https://back-test-4zwpv.ondigitalocean.app/front/pages/1'

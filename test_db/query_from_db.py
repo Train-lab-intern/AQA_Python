@@ -116,4 +116,3 @@ def check_text_where_id_9(connection):
     result = cursor.fetchone()[0]
     cursor.close()
     return result
-
