@@ -1,7 +1,3 @@
-from test_db.conn import ssh_tunnel_and_db_connection
-
-
-@ssh_tunnel_and_db_connection
 def check_text_where_id_1(connection):
     cursor = connection.cursor()
     new_query = """SELECT front_id FROM frontend_data WHERE id=1"""
@@ -14,7 +10,6 @@ def check_text_where_id_1(connection):
     return result
 
 
-@ssh_tunnel_and_db_connection
 def check_text_where_id_2(connection):
     cursor = connection.cursor()
     new_query = """SELECT front_id FROM frontend_data WHERE id=2"""
@@ -27,7 +22,6 @@ def check_text_where_id_2(connection):
     return result
 
 
-@ssh_tunnel_and_db_connection
 def check_text_where_id_3(connection):
     cursor = connection.cursor()
     new_query = """SELECT front_id FROM frontend_data WHERE id=3"""
@@ -40,7 +34,6 @@ def check_text_where_id_3(connection):
     return result
 
 
-@ssh_tunnel_and_db_connection
 def check_text_where_id_4(connection):
     cursor = connection.cursor()
     new_query = """SELECT front_id FROM frontend_data WHERE id=4"""
@@ -53,7 +46,6 @@ def check_text_where_id_4(connection):
     return result
 
 
-@ssh_tunnel_and_db_connection
 def check_text_where_id_5(connection):
     cursor = connection.cursor()
     new_query = """SELECT front_id FROM frontend_data WHERE id=5"""
@@ -66,7 +58,6 @@ def check_text_where_id_5(connection):
     return result
 
 
-@ssh_tunnel_and_db_connection
 def check_text_where_id_6(connection):
     cursor = connection.cursor()
     new_query = """SELECT front_id FROM frontend_data WHERE id=6"""
@@ -79,7 +70,6 @@ def check_text_where_id_6(connection):
     return result
 
 
-@ssh_tunnel_and_db_connection
 def check_text_where_id_7(connection):
     cursor = connection.cursor()
     new_query = """SELECT front_id FROM frontend_data WHERE id=7"""
@@ -92,7 +82,6 @@ def check_text_where_id_7(connection):
     return result
 
 
-@ssh_tunnel_and_db_connection
 def check_text_where_id_8(connection):
     cursor = connection.cursor()
     new_query = """SELECT front_id FROM frontend_data WHERE id=8"""
@@ -105,7 +94,6 @@ def check_text_where_id_8(connection):
     return result
 
 
-@ssh_tunnel_and_db_connection
 def check_text_where_id_9(connection):
     cursor = connection.cursor()
     new_query = """SELECT front_id FROM frontend_data WHERE id=9"""
