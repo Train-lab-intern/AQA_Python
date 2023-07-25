@@ -44,3 +44,7 @@ def test_sign_in_button_text_is_ok(browser):
     assert home_page.sign_in_button_text() == 'Войти'
 
 
+def test_success_banner_text_is_ok(browser):
+    home_page = HomePage(browser)
+    home_page.open_page()
+    assert home_page.success_banner_text() == 'Создай свой успех'
