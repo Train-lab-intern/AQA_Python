@@ -44,5 +44,8 @@ class HomePage(BasePage):
 
     def success_banner_text(self):
         success_ban = self.find_element(hpl.success_banner_bar)
-        return success_ban.find_element(By.CLASS_NAME, 'Banner_h3_banner__BaCln').text
+        sleep(0.5)  # нужно, иначе падает
+        return success_ban.text
+
+
 
