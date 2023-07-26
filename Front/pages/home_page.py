@@ -4,6 +4,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 from time import sleep  #DELETE
+from Front.bd_creds import take_text_by_front_id_from_db as bd_creds
 
 
 class HomePage(BasePage):
@@ -47,5 +48,11 @@ class HomePage(BasePage):
         sleep(0.5)  # нужно, иначе падает
         return success_ban.text
 
-
+    def success_banner_text_takes_from_bd(self):
+        sleep(1)
+        success_ban = self.find_element(hpl.success_banner_bar).text
+        if success_ban == bd_creds(1.1):
+            return True
+        else:
+            return False
 

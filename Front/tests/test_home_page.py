@@ -48,3 +48,9 @@ def test_success_banner_text_is_ok(browser):
     home_page = HomePage(browser)
     home_page.open_page()
     assert home_page.success_banner_text() == 'Создай свой успех'
+
+
+def test_success_banner_text_takes_from_bd(browser):
+    home_page = HomePage(browser)
+    home_page.open_page()
+    assert home_page.success_banner_text_takes_from_bd() is True
