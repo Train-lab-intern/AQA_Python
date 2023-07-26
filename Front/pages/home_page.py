@@ -1,10 +1,10 @@
 from Front.pages.base_page import BasePage
 from Front.pages.locators import home_page_locators as hpl
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.action_chains import ActionChains
 from time import sleep  #DELETE
 from Front.bd_creds import take_text_by_front_id_from_db as bd_creds
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class HomePage(BasePage):
@@ -19,37 +19,36 @@ class HomePage(BasePage):
 
     def o_nas_button(self):
         but_area = self.find_element(hpl.o_nas_bar)
-        o_nas_but = but_area.find_element(By.CLASS_NAME, 'btn-secondary')
-        return o_nas_but
+        return but_area.find_element(By.CLASS_NAME, 'btn-secondary')
 
     def o_nas_button_text(self):
         but_list = self.find_element(hpl.o_nas_bar)
-        o_nas_but = but_list.find_element(By.CLASS_NAME, 'btn-secondary')
-        return o_nas_but.text
+        return but_list.find_element(By.CLASS_NAME, 'btn-secondary').text
 
     def tasks_button(self):
-        tasks_but = self.find_element(hpl.tasks_but)
-        return tasks_but
+        return self.find_element(hpl.tasks_but)
 
     def tasks_button_text(self):
-        tasks_but = self.find_element(hpl.tasks_but)
-        return tasks_but.text
+        return self.find_element(hpl.tasks_but).text
 
     def sign_in_button(self):
-        sign_in_but = self.find_element(hpl.sign_in_but)
-        return sign_in_but
+        return self.find_element(hpl.sign_in_but)
 
     def sign_in_button_text(self):
-        sign_in_but = self.find_element(hpl.sign_in_but)
-        return sign_in_but.text
+        return self.find_element(hpl.sign_in_but).text
 
     def success_banner_text(self):
+        try:
+            WebDriverWait(self, 3).until(
+                EC.text_to_be_present_in_element(hpl.success_banner_bar, 'Создай свой успех'))
+        except:
+            print('Text_is_not_loaded')
         success_ban = self.find_element(hpl.success_banner_bar)
-        sleep(0.5)  # нужно, иначе падает
+        #sleep(0.5)  # нужно, иначе падает
         return success_ban.text
 
     def success_banner_text_takes_from_bd(self):
-        sleep(1)
+        sleep(0.5)
         success_ban = self.find_element(hpl.success_banner_bar).text
         if success_ban == bd_creds(1.1):
             return True
