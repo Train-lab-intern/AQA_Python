@@ -54,3 +54,17 @@ def test_success_banner_text_takes_from_bd(browser):
     home_page = HomePage(browser)
     home_page.open_page()
     assert home_page.success_banner_text_takes_from_bd() is True
+
+
+def test_our_simulators_banner_text_is_ok(browser):
+    home_page = HomePage(browser)
+    home_page.open_page()
+    assert home_page.our_simulators_banner_text() == 'Наши тренажеры' \
+             ' разработаны на основе тестовых заданий работодателей. ' \
+             'выполняя задания и зарабатывая баллы, ты найдешь работу мечты'
+
+
+def test_our_simulators_banner_text_takes_from_bd(browser):
+    home_page = HomePage(browser)
+    home_page.open_page()
+    assert home_page.our_simulators_banner_text_takes_from_bd() is True

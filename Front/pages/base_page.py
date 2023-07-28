@@ -1,4 +1,6 @@
 from selenium.webdriver.chrome.webdriver import WebDriver
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class BasePage:
@@ -14,4 +16,5 @@ class BasePage:
         by_name, by_val = args
         return self.browser.find_elements(by_name, by_val)
 
-
+    def wait_element(self, locator):
+        return WebDriverWait(self.browser, 10).until(EC.visibility_of_element_located(locator))

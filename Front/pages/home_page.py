@@ -1,10 +1,7 @@
 from Front.pages.base_page import BasePage
 from Front.pages.locators import home_page_locators as hpl
 from selenium.webdriver.common.by import By
-from time import sleep  #DELETE
 from Front.bd_creds import take_text_by_front_id_from_db as bd_creds
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 
 
 class HomePage(BasePage):
@@ -38,19 +35,25 @@ class HomePage(BasePage):
         return self.find_element(hpl.sign_in_but).text
 
     def success_banner_text(self):
-        try:
-            WebDriverWait(self, 3).until(
-                EC.text_to_be_present_in_element(hpl.success_banner_bar, 'Создай свой успех'))
-        except:
-            print('Text_is_not_loaded')
-        success_ban = self.find_element(hpl.success_banner_bar)
-        #sleep(0.5)  # нужно, иначе падает
-        return success_ban.text
+        self.wait_element(hpl.success_banner_bar)
+        return self.find_element(hpl.success_banner_bar).text
 
     def success_banner_text_takes_from_bd(self):
-        sleep(0.5)
+        self.wait_element(hpl.success_banner_bar)
         success_ban = self.find_element(hpl.success_banner_bar).text
         if success_ban == bd_creds(1.1):
+            return True
+        else:
+            return False
+
+    def our_simulators_banner_text(self):
+        self.wait_element(hpl.our_simulators_banner)
+        return self.find_element(hpl.our_simulators_banner).text
+
+    def our_simulators_banner_text_takes_from_bd(self):
+        self.wait_element(hpl.our_simulators_banner)
+        simulators_ban = self.find_element(hpl.our_simulators_banner).text
+        if simulators_ban == bd_creds(1.2):
             return True
         else:
             return False
