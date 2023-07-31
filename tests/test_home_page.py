@@ -1,5 +1,8 @@
 from pages.home_page import HomePage
 
+TEXT_BANNER = 'Наши тренажеры разработаны на основе тестовых заданий работодателей. ' \
+              'выполняя задания и зарабатывая баллы, ты найдешь работу мечты'
+
 
 def test_trainlab_logo_is_displayed(driver):
     home_page = HomePage(driver)
@@ -52,6 +55,4 @@ def test_success_banner_text_is_ok(driver):
 def test_our_simulators_banner_text_is_ok(driver):
     home_page = HomePage(driver)
     home_page.open_page()
-    assert home_page.our_simulators_banner_text() == 'Наши тренажеры' \
-                                                     ' разработаны на основе тестовых заданий работодателей. ' \
-                                                     'выполняя задания и зарабатывая баллы, ты найдешь работу мечты'
+    assert home_page.our_simulators_banner_text() == TEXT_BANNER
