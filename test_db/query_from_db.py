@@ -1,106 +1,79 @@
-def check_text_where_id_1(connection):
+def check_text_where_front_id_1_1(connection):
     cursor = connection.cursor()
-    new_query = """SELECT front_id FROM frontend_data WHERE id=1"""
-    cursor.execute(new_query)
-    front_id_result = cursor.fetchone()[0]
-    query = "SELECT text FROM frontend_data WHERE front_id=%s"
-    cursor.execute(query, (str(front_id_result),))
+    query = "SELECT text FROM frontend_data WHERE front_id='1.1'"
+    cursor.execute(query)
     result = cursor.fetchone()[0]
     cursor.close()
     return result
 
 
-def check_text_where_id_2(connection):
+def check_text_where_front_id_1_2(connection):
     cursor = connection.cursor()
-    new_query = """SELECT front_id FROM frontend_data WHERE id=2"""
-    cursor.execute(new_query)
-    front_id_result = cursor.fetchone()[0]
-    query = "SELECT text FROM frontend_data WHERE front_id=%s"
-    cursor.execute(query, (str(front_id_result),))
+    query = "SELECT text FROM frontend_data WHERE front_id='1.2'"
+    cursor.execute(query)
     result = cursor.fetchone()[0]
     cursor.close()
     return result
 
 
-def check_text_where_id_3(connection):
+def check_text_where_front_id_1_3(connection):
     cursor = connection.cursor()
-    new_query = """SELECT front_id FROM frontend_data WHERE id=3"""
-    cursor.execute(new_query)
-    front_id_result = cursor.fetchone()[0]
-    query = "SELECT text FROM frontend_data WHERE front_id=%s"
-    cursor.execute(query, (str(front_id_result),))
+    query = "SELECT text FROM frontend_data WHERE front_id='1.3'"
+    cursor.execute(query)
     result = cursor.fetchone()[0]
     cursor.close()
     return result
 
 
-def check_text_where_id_4(connection):
+def check_text_where_front_id_1_4(connection):
     cursor = connection.cursor()
-    new_query = """SELECT front_id FROM frontend_data WHERE id=4"""
-    cursor.execute(new_query)
-    front_id_result = cursor.fetchone()[0]
-    query = "SELECT text FROM frontend_data WHERE front_id=%s"
-    cursor.execute(query, (str(front_id_result),))
+    query = "SELECT text FROM frontend_data WHERE front_id='1.4'"
+    cursor.execute(query)
     result = cursor.fetchone()[0]
     cursor.close()
     return result
 
 
-def check_text_where_id_5(connection):
+def check_text_where_front_id_1_5(connection):
     cursor = connection.cursor()
-    new_query = """SELECT front_id FROM frontend_data WHERE id=5"""
-    cursor.execute(new_query)
-    front_id_result = cursor.fetchone()[0]
-    query = "SELECT text FROM frontend_data WHERE front_id=%s"
-    cursor.execute(query, (str(front_id_result),))
+    query = "SELECT text FROM frontend_data WHERE front_id='1.5'"
+    cursor.execute(query)
     result = cursor.fetchone()[0]
     cursor.close()
     return result
 
 
-def check_text_where_id_6(connection):
+def check_text_where_front_id_1_6(connection):
     cursor = connection.cursor()
-    new_query = """SELECT front_id FROM frontend_data WHERE id=6"""
-    cursor.execute(new_query)
-    front_id_result = cursor.fetchone()[0]
-    query = "SELECT text FROM frontend_data WHERE front_id=%s"
-    cursor.execute(query, (str(front_id_result),))
+    query = "SELECT text FROM frontend_data WHERE front_id='1.6'"
+    cursor.execute(query)
     result = cursor.fetchone()[0]
     cursor.close()
     return result
 
 
-def check_text_where_id_7(connection):
+def check_text_where_front_id_1_7(connection):
     cursor = connection.cursor()
-    new_query = """SELECT front_id FROM frontend_data WHERE id=7"""
-    cursor.execute(new_query)
-    front_id_result = cursor.fetchone()[0]
-    query = "SELECT text FROM frontend_data WHERE front_id=%s"
-    cursor.execute(query, (str(front_id_result),))
+    query = "SELECT text FROM frontend_data WHERE front_id='1.7'"
+    cursor.execute(query)
     result = cursor.fetchone()[0]
     cursor.close()
     return result
 
 
-def check_text_where_id_8(connection):
+def check_text_where_front_id_1_8(connection):
     cursor = connection.cursor()
-    new_query = """SELECT front_id FROM frontend_data WHERE id=8"""
-    cursor.execute(new_query)
-    front_id_result = cursor.fetchone()[0]
-    query = "SELECT text FROM frontend_data WHERE front_id=%s"
-    cursor.execute(query, (str(front_id_result),))
+    query = "SELECT text FROM frontend_data WHERE front_id='1.8'"
+    cursor.execute(query)
     result = cursor.fetchone()[0]
     cursor.close()
     return result
 
 
-def check_text_where_id_9(connection):
+def check_text_where_front_id_1_9(connection):
     cursor = connection.cursor()
-    new_query = """SELECT front_id FROM frontend_data WHERE id=9"""
-    cursor.execute(new_query)
-    front_id_result = cursor.fetchone()[0]
-    query = "SELECT text FROM frontend_data WHERE front_id=%s"
-    cursor.execute(query, (str(front_id_result),))
+    query = "SELECT text FROM frontend_data WHERE front_id='1.9'"
+    cursor.execute(query)
     result = cursor.fetchone()[0]
     cursor.close()
     return result
