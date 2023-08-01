@@ -1,5 +1,4 @@
 from pages.home_page import HomePage
-from conftest import browser
 
 
 def test_trainlab_logo_is_displayed(browser):
