@@ -1,10 +1,7 @@
 import psycopg2
 import pytest
 from sshtunnel import SSHTunnelForwarder
-from settings import (
-    ssh_host, ssh_port, ssh_username, ssh_password,
-    db_host, db_port, db_username, db_password, db_name
-)
+import settings
 import api_response
 import query_from_db
 
@@ -12,17 +9,17 @@ import query_from_db
 @pytest.fixture()
 def connection():
     with SSHTunnelForwarder(
-            (ssh_host, ssh_port),
-            ssh_username=ssh_username,
-            ssh_password=ssh_password,
-            remote_bind_address=(db_host, db_port)) as tunnel:
+            (settings.ssh_host, settings.ssh_port),
+            ssh_username=settings.ssh_username,
+            ssh_password=settings.ssh_password,
+            remote_bind_address=(settings.db_host, settings.db_port)) as tunnel:
         print('Connected to server')
         conn = psycopg2.connect(
             host='localhost',
             port=tunnel.local_bind_port,
-            user=db_username,
-            password=db_password,
-            database=db_name
+            user=settings.db_username,
+            password=settings.db_password,
+            database=settings.db_name
         )
         yield conn
         conn.close()
