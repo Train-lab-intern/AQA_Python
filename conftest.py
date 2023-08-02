@@ -11,22 +11,23 @@ def driver(browser_options, host_options):
         with allure.step(f'Rune Firefox and {host_options}'):
             options = Options_ff()
             options.add_argument("--headless")
-
+            options.add_argument("--disable-gpu")
+            options.add_argument("--window-size=1920x1080")
             driver_browser = webdriver.Firefox(options=options)
-            driver_browser.maximize_window()
 
     elif browser_options == 'ff':
         with allure.step('Rune Firefox'):
             driver_browser = webdriver.Firefox()
-            # driver_browser.maximize_window()
+            driver_browser.maximize_window()
 
     elif host_options == 'server':
         with allure.step(f'Rune Chrome with {host_options}'):
             options = Options_chrome()
             options.add_argument("--headless")
-            options.add_argument("start-maximized")
+            options.add_argument("--disable-gpu")
+            options.add_argument("--window-size=1920x1080")
             driver_browser = webdriver.Chrome(options=options)
-            driver_browser.maximize_window()
+
     else:
         with allure.step('Rune Chrome'):
             driver_browser = webdriver.Chrome()

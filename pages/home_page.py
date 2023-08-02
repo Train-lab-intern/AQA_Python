@@ -16,11 +16,11 @@ class HomePage(BasePage):
 
     def o_nas_button(self):
         but_area = self.find_element(hpl.o_nas_bar)
-        return but_area.find_element(By.CLASS_NAME, 'btn-secondary')
+        return but_area.find_element(By.CSS_SELECTOR, '.btn.btn-secondary')
 
     def o_nas_button_text(self):
         but_list = self.find_element(hpl.o_nas_bar)
-        return but_list.find_element(By.CLASS_NAME, 'btn-secondary').text
+        return but_list.find_element(By.CSS_SELECTOR, '.btn.btn-secondary').text
 
     def tasks_button(self):
         return self.find_element(hpl.tasks_but)
