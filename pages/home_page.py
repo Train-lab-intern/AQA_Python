@@ -22,10 +22,12 @@ class HomePage(BasePage):
         return but_list.find_element(By.CLASS_NAME, 'btn-secondary').text
 
     def tasks_button(self):
-        return self.find_element(hpl.tasks_but)
+        but_list = self.find_element(hpl.tasks_but)
+        return but_list.find_element(By.CLASS_NAME, 'btn-secondary')
 
     def tasks_button_text(self):
-        return self.find_element(hpl.tasks_but).text
+        but_list = self.find_element(hpl.tasks_but)
+        return but_list.find_element(By.CLASS_NAME, 'btn-secondary').text
 
     def sign_in_button(self):
         return self.find_element(hpl.sign_in_but)
