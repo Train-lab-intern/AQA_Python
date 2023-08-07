@@ -51,6 +51,7 @@ def connect_db(host_options):
             database=database_connection.database
         )
         curs = con.cursor()
+        print('run tests db in server')
         yield curs
         curs.close()
 
