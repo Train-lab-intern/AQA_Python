@@ -1,8 +1,8 @@
 import pytest
 import allure
 import psycopg2
-from selenium import webdriver
 from sshtunnel import SSHTunnelForwarder
+from selenium import webdriver
 from selenium.webdriver.chrome.options import Options as Options_chrome
 from selenium.webdriver.firefox.options import Options as Options_ff
 import database_connection
