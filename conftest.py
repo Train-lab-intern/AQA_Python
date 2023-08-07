@@ -43,31 +43,10 @@ def driver(browser_options, host_options):
 @pytest.fixture(scope='function')
 def connect_db(host_options):
     if host_options == 'server':
-        con = psycopg2.connect(
-            host=database_connection.host,
-            port=database_connection.port,
-            user=database_connection.username,
-            password=database_connection.password,
-            database=database_connection.database
-        )
-        curs = con.cursor()
-        yield curs
-        curs.close()
-
-    else:
-        with SSHTunnelForwarder(
-                (database_connection.server_ip, database_connection.ssh_port),  # Remote server IP and SSH port
-                ssh_username=database_connection.ssh_username,
-                ssh_private_key=database_connection.ssh_private_key,
-                remote_bind_address=(
-                        database_connection.host,
-                        database_connection.port)) as server:  # PostgreSQL server IP and sever port on remote machine
-            server.start()  # start ssh sever
-            print('Server connected via SSH')
-
+        with allure.step(f'Run a database connection from {host_options}'):
             con = psycopg2.connect(
-                host='localhost',
-                port=server.local_bind_port,
+                host=database_connection.host,
+                port=database_connection.port,
                 user=database_connection.username,
                 password=database_connection.password,
                 database=database_connection.database
@@ -75,7 +54,28 @@ def connect_db(host_options):
             curs = con.cursor()
             yield curs
             curs.close()
-            server.close()
+
+    else:
+        with allure.step(f'Run a database connection from {host_options}'):
+            with SSHTunnelForwarder(
+                    (database_connection.server_ip, database_connection.ssh_port),
+                    ssh_username=database_connection.ssh_username,
+                    ssh_private_key=database_connection.ssh_private_key,
+                    remote_bind_address=(
+                            database_connection.host,
+                            database_connection.port)) as server:
+                server.start()
+                con = psycopg2.connect(
+                    host='localhost',
+                    port=server.local_bind_port,
+                    user=database_connection.username,
+                    password=database_connection.password,
+                    database=database_connection.database
+                )
+                curs = con.cursor()
+                yield curs
+                curs.close()
+                server.close()
 
 
 def pytest_addoption(parser):
@@ -88,8 +88,8 @@ def pytest_addoption(parser):
     parser.addoption(
         '--host',
         action='store',
-        default='ui',
-        help='Укажите варивнт запуска браузера, по умолчанию UI'
+        default='localhost',
+        help='Укажите варивнт запуска тестов с хоста, по умолчанию localhost'
     )
 
 
