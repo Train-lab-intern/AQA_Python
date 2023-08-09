@@ -13,10 +13,15 @@ def driver(browser_options, host_options):
     if browser_options == 'ff' and host_options == 'server':
         with allure.step(f'Rune Firefox and {host_options}'):
             options = Options_ff()
+            # options.add_argument("--headless")
+            # options.add_argument("--disable-gpu")
+            # options.add_argument("--window-size=1920x1080")
+            # driver_browser = webdriver.Firefox(options=options)
+            options.add_argument("--no-sandbox")
             options.add_argument("--headless")
             options.add_argument("--disable-gpu")
-            options.add_argument("--window-size=1920x1080")
-            driver_browser = webdriver.Firefox(options=options)
+            options.add_argument("--window-size=1920,1080")
+            driver = webdriver.Firefox(options=options,executable_path= os.getcwd() + '/geckodriver')
 
     elif browser_options == 'ff':
         with allure.step('Rune Firefox'):
