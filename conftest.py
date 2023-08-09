@@ -4,8 +4,7 @@ import psycopg2
 from sshtunnel import SSHTunnelForwarder
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options as Options_chrome
-from selenium.webdriver import FirefoxOptions
-# from selenium.webdriver.firefox.options import Options as Options_ff
+from selenium.webdriver.firefox.options import Options as Options_ff
 import database_connection
 
 
@@ -13,16 +12,11 @@ import database_connection
 def driver(browser_options, host_options):
     if browser_options == 'ff' and host_options == 'server':
         with allure.step(f'Rune Firefox and {host_options}'):
-            # options = Options_ff()
-
-            opts = FirefoxOptions()
-            opts.add_argument("--headless")
-            driver_browser = webdriver.Firefox(firefox_options=opts)
-
-            # options.add_argument("--headless")
-            # options.add_argument("--disable-gpu")
-            # options.add_argument("--window-size=1920x1080")
-            # driver_browser = webdriver.Firefox(options=options)
+            options = Options_ff()
+            options.add_argument("--headless")
+            options.add_argument("--disable-gpu")
+            options.add_argument("--window-size=1920x1080")
+            driver_browser = webdriver.Firefox(options=options)
 
     elif browser_options == 'ff':
         with allure.step('Rune Firefox'):
