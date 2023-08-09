@@ -21,7 +21,7 @@ def driver(browser_options, host_options):
             options.add_argument("--headless")
             options.add_argument("--disable-gpu")
             options.add_argument("--window-size=1920,1080")
-            driver = webdriver.Firefox(options=options,executable_path= os.getcwd() + '/geckodriver')
+            driver = webdriver.Firefox(options=options,executable_path='/geckodriver')
 
     elif browser_options == 'ff':
         with allure.step('Rune Firefox'):
