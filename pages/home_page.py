@@ -6,31 +6,28 @@ from pages.base_page import BasePage
 class HomePage(BasePage):
     def __init__(self, browser):
         super().__init__(browser)
+        self.browser = browser
 
     def open_page(self):
         self.browser.get(self.base_url)
 
-    def logo(self):
-        return self.find_element(hpl.train_lab_logo)
+    def logo_is_displayed(self):
+        return self.find_element(hpl.train_lab_logo).is_displayed()
 
-    def about_us_button(self):
-        but_area = self.find_element(hpl.o_nas_bar)
-        return but_area.find_element(By.CLASS_NAME, 'btn-secondary')
+    def about_us_button_is_displayed(self):
+        return self.find_element(hpl.about_us_btn).is_displayed()
 
     def o_nas_button_text(self):
-        but_list = self.find_element(hpl.o_nas_bar)
-        return but_list.find_element(By.CLASS_NAME, 'btn-secondary').text
+        return self.find_element(hpl.about_us_btn).text
 
-    def tasks_button(self):
-        but_list = self.find_element(hpl.tasks_but)
-        return but_list.find_element(By.CLASS_NAME, 'btn-secondary')
+    def tasks_button_is_displayed(self):
+        return self.find_element(hpl.tasks_btn).is_displayed()
 
     def tasks_button_text(self):
-        but_list = self.find_element(hpl.tasks_but)
-        return but_list.find_element(By.CLASS_NAME, 'btn-secondary').text
+        return self.find_element(hpl.tasks_btn).text
 
-    def sign_in_button(self):
-        return self.find_element(hpl.sign_in_but)
+    def sign_in_button_is_displayed(self):
+        return self.find_element(hpl.sign_in_but).is_displayed()
 
     def sign_in_button_text(self):
         return self.find_element(hpl.sign_in_but).text

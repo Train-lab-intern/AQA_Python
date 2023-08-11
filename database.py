@@ -23,7 +23,8 @@ def change_text_in_database_by_front_id(front_id_bd, text_to_change):
 
             conn = psycopg2.connect(**params)
             curs = conn.cursor()
-            curs.execute(f"update frontend_data SET text='{text_to_change}' WHERE front_id='{front_id_bd}';")
+            curs.execute(f"update frontend_data SET text='{text_to_change}'"
+                         f" WHERE front_id='{front_id_bd}';")
             conn.commit()
             conn.close()
             return True

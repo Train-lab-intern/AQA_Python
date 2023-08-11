@@ -1,6 +1,6 @@
-from pages.home_page import HomePage
-import database as Database
 import allure
+import database as Database
+from pages.home_page import HomePage
 
 
 @allure.feature('Home page')
@@ -11,7 +11,7 @@ def test_trainlab_logo_is_displayed(browser):
     with allure.step('Open Home page'):
         home_page.open_page()
     with allure.step('Check that Trainlab logo is displayed'):
-        assert home_page.logo().is_displayed()
+        assert home_page.logo_is_displayed()
 
 
 @allure.feature('Home page')
@@ -22,13 +22,13 @@ def test_about_us_button_is_displayed(browser):
     with allure.step('Open Home page'):
         home_page.open_page()
     with allure.step('Check that about us button is displayed'):
-        assert home_page.about_us_button().is_displayed()
+        assert home_page.about_us_button_is_displayed()
 
 
 @allure.feature('Home page')
 @allure.story('About us button')
 @allure.title('Testing about us button')
-def test_o_nas_button_text_is_ok(browser):
+def test_about_us_button_text_is_ok(browser):
     home_page = HomePage(browser)
     with allure.step('Open Home page'):
         home_page.open_page()
@@ -44,7 +44,7 @@ def test_tasks_button_is_displayed(browser):
     with allure.step('Open Home page'):
         home_page.open_page()
     with allure.step('Check that tasks button is displayed'):
-        assert home_page.tasks_button().is_displayed()
+        assert home_page.tasks_button_is_displayed()
 
 
 @allure.feature('Home page')
@@ -66,7 +66,7 @@ def test_sign_in_button_is_displayed(browser):
     with allure.step('Open Home page'):
         home_page.open_page()
     with allure.step('Check that sign in button is displayed'):
-        assert home_page.sign_in_button().is_displayed()
+        assert home_page.sign_in_button_is_displayed()
 
 
 @allure.feature('Home page')
@@ -94,7 +94,7 @@ def test_success_banner_text_is_ok(browser):
 @allure.feature('Home page')
 @allure.story('Success banner')
 @allure.title('Testing success banner')
-def test_success_banner_text_takes_from_bd(browser):
+def test_success_banner_text_takes_from_bd(browser):  #надо менять структуру
     with allure.step('Take text from database by front id'):
         text_from_database = Database.take_text_from_database_by_front_id(1.1)
     with allure.step('Change text in database by front id'):
@@ -126,7 +126,7 @@ def test_our_simulators_banner_text_is_ok(browser):
 @allure.feature('Home page')
 @allure.story('Simulators banner')
 @allure.title('Testing simulators banner')
-def test_our_simulators_banner_text_takes_from_bd(browser):
+def test_our_simulators_banner_text_takes_from_bd(browser):  #надо менять структуру
     with allure.step('Take text from database by front id'):
         text_from_database = Database.take_text_from_database_by_front_id(1.2)
     with allure.step('Change text in database by front id'):
