@@ -1,4 +1,3 @@
-from selenium.webdriver.common.by import By
 from pages.locators import home_page_locators as hpl
 from pages.base_page import BasePage
 
