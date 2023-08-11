@@ -140,3 +140,25 @@ def test_our_simulators_banner_text_takes_from_bd(browser):  #надо меня�
         Database.change_text_in_database_by_front_id(1.2, f"{text_from_database}")
     with allure.step('Check that text for website element takes from database'):
         assert new_text_from_website == 'Текст изменен'
+
+
+@allure.feature('Home page')
+@allure.story('Start the journey button')
+@allure.title('Testing start the journey button')
+def test_start_the_journey_button_is_displayed(browser):
+    home_page = HomePage(browser)
+    with allure.step('Open Home page'):
+        home_page.open_page()
+    with allure.step('Check that start the journey button is displayed'):
+        assert home_page.start_the_journey_button_is_displayed()
+
+
+@allure.feature('Home page')
+@allure.story('Start the journey button')
+@allure.title('Testing start the journey button')
+def test_start_the_journey_button_text_is_ok(browser):
+    home_page = HomePage(browser)
+    with allure.step('Open Home page'):
+        home_page.open_page()
+    with allure.step('Check that start the journey button text is displayed'):
+        assert home_page.start_the_journey_button_text() == 'Начать путь'

@@ -27,10 +27,10 @@ class HomePage(BasePage):
         return self.find_element(hpl.tasks_btn).text
 
     def sign_in_button_is_displayed(self):
-        return self.find_element(hpl.sign_in_but).is_displayed()
+        return self.find_element(hpl.sign_in_btn).is_displayed()
 
     def sign_in_button_text(self):
-        return self.find_element(hpl.sign_in_but).text
+        return self.find_element(hpl.sign_in_btn).text
 
     def success_banner_text(self):
         self.wait_element(hpl.success_banner_bar)
@@ -39,3 +39,9 @@ class HomePage(BasePage):
     def our_simulators_banner_text(self):
         self.wait_element(hpl.our_simulators_banner)
         return self.find_element(hpl.our_simulators_banner).text
+
+    def start_the_journey_button_is_displayed(self):
+        return self.find_element(hpl.start_the_journey_btn).is_displayed()
+
+    def start_the_journey_button_text(self):
+        return self.find_element(hpl.start_the_journey_btn).text
