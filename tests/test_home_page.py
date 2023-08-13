@@ -162,3 +162,36 @@ def test_start_the_journey_button_text_is_ok(browser):
         home_page.open_page()
     with allure.step('Check that start the journey button text is displayed'):
         assert home_page.start_the_journey_button_text() == 'Начать путь'
+
+
+@allure.feature('Home page')
+@allure.story('SQL banner')
+@allure.title('Testing SQL banner')
+def test_sql_banner_is_displayed(browser):
+    home_page = HomePage(browser)
+    with allure.step('Open Home page'):
+        home_page.open_page()
+    with allure.step('Check that SQL banner is displayed'):
+        assert home_page.sql_banner_is_displayed()
+
+
+@allure.feature('Home page')
+@allure.story('Python banner')
+@allure.title('Testing Python banner')
+def test_python_banner_is_displayed(browser):
+    home_page = HomePage(browser)
+    with allure.step('Open Home page'):
+        home_page.open_page()
+    with allure.step('Check that Python banner is displayed'):
+        assert home_page.python_banner_is_displayed()
+
+
+@allure.feature('Home page')
+@allure.story('JavaScript banner')
+@allure.title('Testing JavaScript banner')
+def test_java_script_banner_is_displayed(browser):
+    home_page = HomePage(browser)
+    with allure.step('Open Home page'):
+        home_page.open_page()
+    with allure.step('Check that JavaScript banner is displayed'):
+        assert home_page.java_script_banner_is_displayed()

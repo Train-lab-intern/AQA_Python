@@ -44,3 +44,12 @@ class HomePage(BasePage):
 
     def start_the_journey_button_text(self):
         return self.find_element(hpl.start_the_journey_btn).text
+
+    def sql_banner_is_displayed(self):
+        return self.find_element(hpl.sql_banner).is_displayed()
+
+    def python_banner_is_displayed(self):
+        return self.find_element(hpl.python_banner).is_displayed()
+
+    def java_script_banner_is_displayed(self):
+        return self.find_element(hpl.java_script_banner).is_displayed()

@@ -8,3 +8,6 @@ sign_in_btn = (By.XPATH, '//a[@href="/auth"]/button')  #CSS нужно испо�
 success_banner_bar = (By.CLASS_NAME, 'Banner_h3_banner__BaCln')
 our_simulators_banner = (By.CLASS_NAME, 'Banner_text_banner__EfApu')
 start_the_journey_btn = (By.CLASS_NAME, 'Banner_btn_banner__ZteJM')
+sql_banner = (By.CSS_SELECTOR, 'li[data-index="0"] h3')
+python_banner = (By.CSS_SELECTOR, 'li[data-index="1"] h3')
+java_script_banner = (By.CSS_SELECTOR, 'li[data-index="2"] h3')
