@@ -1,1 +1,4 @@
 venv
+/bd_creds.py
+/bd_data.py
+/reports/
