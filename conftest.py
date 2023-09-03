@@ -51,9 +51,8 @@ def connect_db(host_options):
                 password=database_connection.password,
                 database=database_connection.database
             )
-            curs = con.cursor()
-            yield curs
-            curs.close()
+            yield con
+            con.close()
 
     else:
         with allure.step(f'Run a database connection from {host_options}'):
@@ -72,9 +71,8 @@ def connect_db(host_options):
                     password=database_connection.password,
                     database=database_connection.database
                 )
-                curs = con.cursor()
-                yield curs
-                curs.close()
+                yield con
+                con.close()
                 server.close()
 
 
