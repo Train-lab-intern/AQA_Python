@@ -18,7 +18,7 @@ def post_request_create_user(email, username, password):
         "password": f"{password}"
     })
     request = requests.request('POST', DOMAIN + register_user, headers=headers,
-                               data=data)
+                               data=data, timeout=20)
     return request
 
 
@@ -27,7 +27,9 @@ def get_request_confirm_registration(email):
     params = {
         'userEmail': f'{email}'
     }
-    request = requests.request('GET', DOMAIN + complete_registration, params=params)
+    request = requests.request(
+        'GET', DOMAIN + complete_registration, params=params, timeout=20
+    )
     return request
 
 
