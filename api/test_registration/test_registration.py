@@ -33,6 +33,12 @@ def get_request_confirm_registration(email):
     return request
 
 
+def delete_session(connect_db, user_id):
+    curs = connect_db.cursor()
+    curs.execute(f"delete from sessions where user_id = '{user_id}'")
+    connect_db.commit()
+
+
 @allure.feature('Registration')
 @allure.story('Send a request with a valid email')
 @pytest.mark.parametrize('email', [
@@ -173,5 +179,9 @@ def test_confirm_registration(connect_db, check_existence_and_delete_email, emai
         post_request_create_user(f'{email}', 'Vasia', 'Qaz12345')
     with allure.step('Send request confirm registration'):
         request = get_request_confirm_registration(f'{email}')
+        response = request.json()
+        user_id = (response['userDto']['id'])
     with allure.step('Check status code'):
         assert request.status_code == 200
+    with allure.step('Delete session'):
+        delete_session(connect_db, user_id)
