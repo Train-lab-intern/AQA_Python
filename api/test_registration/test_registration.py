@@ -180,7 +180,7 @@ def test_confirm_registration(connect_db, check_existence_and_delete_email, emai
     with allure.step('Send request confirm registration'):
         request = get_request_confirm_registration(f'{email}')
         response = request.json()
-        user_id = (response['userDto']['id'])
+        user_id = response['userDto']['id']
     with allure.step('Check status code'):
         assert request.status_code == 200
     with allure.step('Delete session'):
