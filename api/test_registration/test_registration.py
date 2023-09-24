@@ -1,42 +1,6 @@
-import json
 import pytest
-import requests
 import allure
-
-
-DOMAIN = 'https://test.app.it-roast.com'
-
-
-def post_request_create_user(email, username, password):
-    register_user = '/api/v1/users/register'
-    headers = {
-        'Content-Type': 'application/json'
-    }
-    data = json.dumps({
-        "username": f"{username}",
-        "email": f"{email}",
-        "password": f"{password}"
-    })
-    request = requests.request('POST', DOMAIN + register_user, headers=headers,
-                               data=data, timeout=20)
-    return request
-
-
-def get_request_confirm_registration(email):
-    complete_registration = '/api/v1/users/complete-registration'
-    params = {
-        'userEmail': f'{email}'
-    }
-    request = requests.request(
-        'GET', DOMAIN + complete_registration, params=params, timeout=20
-    )
-    return request
-
-
-def delete_session(connect_db, user_id):
-    curs = connect_db.cursor()
-    curs.execute(f"delete from sessions where user_id = '{user_id}'")
-    connect_db.commit()
+from api import base_method
 
 
 @allure.feature('Registration')
@@ -53,7 +17,7 @@ def delete_session(connect_db, user_id):
 ])
 def test_check_valid_emails(connect_db, email, check_existence_and_delete_email):
     with allure.step('Send request to create user'):
-        response = post_request_create_user(f'{email}', 'Vasia', '123456qW')
+        response = base_method.post_request_create_user(f'{email}', 'Vasia', '123456qW')
     with allure.step('Check status code'):
         assert response.status_code == 200
 
@@ -67,7 +31,7 @@ def test_check_valid_emails(connect_db, email, check_existence_and_delete_email)
 ])
 def test_check_invalid_emails(connect_db, email, check_existence_and_delete_email):
     with allure.step('Send request to create user'):
-        response = post_request_create_user(f'{email}', 'Vasia', '123456qW')
+        response = base_method.post_request_create_user(f'{email}', 'Vasia', '123456qW')
     with allure.step('Check status code'):
         assert response.status_code == 400
 
@@ -80,7 +44,7 @@ def test_check_invalid_emails(connect_db, email, check_existence_and_delete_emai
 @pytest.mark.parametrize('email', ['test.trainlab@gmail.com'])
 def test_username(connect_db, username, check_existence_and_delete_email, email):
     with allure.step('Send request to create user'):
-        response = post_request_create_user(f'{email}', f'{username}', '123456qW')
+        response = base_method.post_request_create_user(f'{email}', f'{username}', '123456qW')
     with allure.step('Check status code'):
         assert response.status_code == 200
 
@@ -97,7 +61,7 @@ def test_username(connect_db, username, check_existence_and_delete_email, email)
 @pytest.mark.parametrize('email', ['test.trainlab@gmail.com'])
 def test_valid_password(connect_db, password, email, check_existence_and_delete_email):
     with allure.step('Send request to create user'):
-        response = post_request_create_user(f'{email}', 'Vasia', f'{password}')
+        response = base_method.post_request_create_user(f'{email}', 'Vasia', f'{password}')
     with allure.step('Check status code'):
         assert response.status_code == 200
 
@@ -118,7 +82,7 @@ def test_valid_password(connect_db, password, email, check_existence_and_delete_
 @pytest.mark.parametrize('email', ['test.trainlab@gmail.com'])
 def test_invalid_password(connect_db, password, email, check_existence_and_delete_email):
     with allure.step('Send request to create user'):
-        response = post_request_create_user(f'{email}', 'Vasia', f'{password}')
+        response = base_method.post_request_create_user(f'{email}', 'Vasia', f'{password}')
     with allure.step('Check status code'):
         assert response.status_code == 400
 
@@ -127,7 +91,7 @@ def test_invalid_password(connect_db, password, email, check_existence_and_delet
 @allure.story('Send a request with empty fields')
 def test_registration_with_empty_fields(connect_db):
     with allure.step('Send request to create user'):
-        response = post_request_create_user('', '', '')
+        response = base_method.post_request_create_user('', '', '')
     with allure.step('Check status code'):
         assert response.status_code == 400
 
@@ -136,7 +100,7 @@ def test_registration_with_empty_fields(connect_db):
 @allure.story('Send a request with empty username and password')
 def test_registration_with_empty_username_and_password(connect_db):
     with allure.step('Send request to create user'):
-        response = post_request_create_user('test.trainlab@gmail.com', '', '')
+        response = base_method.post_request_create_user('test.trainlab@gmail.com', '', '')
     with allure.step('Check status code'):
         assert response.status_code == 400
 
@@ -145,7 +109,7 @@ def test_registration_with_empty_username_and_password(connect_db):
 @allure.story('Send a request with empty email and password')
 def test_registration_with_empty_email_and_password(connect_db):
     with allure.step('Send request to create user'):
-        response = post_request_create_user('', 'Vasia', '')
+        response = base_method.post_request_create_user('', 'Vasia', '')
     with allure.step('Check status code'):
         assert response.status_code == 400
 
@@ -154,7 +118,7 @@ def test_registration_with_empty_email_and_password(connect_db):
 @allure.story('Send a request with empty username and email')
 def test_registration_with_empty_username_and_email(connect_db):
     with allure.step('Send request to create user'):
-        response = post_request_create_user('', '', 'Qaz12345')
+        response = base_method.post_request_create_user('', '', 'Qaz12345')
     with allure.step('Check status code'):
         assert response.status_code == 400
 
@@ -164,9 +128,9 @@ def test_registration_with_empty_username_and_email(connect_db):
 @pytest.mark.parametrize('email', ['test.trainlab@gmail.com'])
 def test_registration_with_existing_user(connect_db, check_existence_and_delete_email, email):
     with allure.step('Send request to create user'):
-        post_request_create_user(f'{email}', 'Vasia', 'Qaz12345')
+        base_method.post_request_create_user(f'{email}', 'Vasia', 'Qaz12345')
     with allure.step('Send a request with existing data'):
-        response = post_request_create_user(f'{email}', 'Vasia', 'Qaz12345')
+        response = base_method.post_request_create_user(f'{email}', 'Vasia', 'Qaz12345')
     with allure.step('Check status code'):
         assert response.status_code == 400
 
@@ -176,12 +140,12 @@ def test_registration_with_existing_user(connect_db, check_existence_and_delete_
 @pytest.mark.parametrize('email', ['test.trainlab@gmail.com'])
 def test_confirm_registration(connect_db, check_existence_and_delete_email, email):
     with allure.step('Send request to create user'):
-        post_request_create_user(f'{email}', 'Vasia', 'Qaz12345')
+        base_method.post_request_create_user(f'{email}', 'Vasia', 'Qaz12345')
     with allure.step('Send request confirm registration'):
-        response = get_request_confirm_registration(f'{email}')
+        response = base_method.get_request_confirm_registration(f'{email}')
         response_user_data = response.json()
         user_id = response_user_data['userDto']['id']
     with allure.step('Check status code'):
         assert response.status_code == 200
     with allure.step('Delete session'):
-        delete_session(connect_db, user_id)
+        base_method.delete_session(connect_db, user_id)
