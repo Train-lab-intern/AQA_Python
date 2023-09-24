@@ -47,7 +47,9 @@ def test_username(connect_db, username, check_existence_and_delete_email, email)
 @pytest.mark.parametrize('email', [test_data.EMAIL])
 def test_valid_password(connect_db, password, email, check_existence_and_delete_email):
     with allure.step('Send request to create user'):
-        response = base_method.post_request_create_user(f'{email}', test_data.USERNAME, f'{password}')
+        response = base_method.post_request_create_user(
+            f'{email}', test_data.USERNAME, f'{password}'
+        )
     with allure.step('Check status code'):
         assert response.status_code == 200, f'{password}, line length is equal {len(password)}'
 
@@ -58,7 +60,9 @@ def test_valid_password(connect_db, password, email, check_existence_and_delete_
 @pytest.mark.parametrize('email', [test_data.EMAIL])
 def test_invalid_password(connect_db, password, email, check_existence_and_delete_email):
     with allure.step('Send request to create user'):
-        response = base_method.post_request_create_user(f'{email}', test_data.USERNAME, f'{password}')
+        response = base_method.post_request_create_user(
+            f'{email}', test_data.USERNAME, f'{password}'
+        )
     with allure.step('Check status code'):
         assert response.status_code == 400, f'{password}, line length is equal {len(password)}'
 
