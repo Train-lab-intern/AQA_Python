@@ -130,7 +130,9 @@ def test_registration_with_existing_user(connect_db, check_existence_and_delete_
 @allure.feature('Registration')
 @allure.story('Send a request confirm registration')
 @pytest.mark.parametrize('email', [test_data.EMAIL])
-def test_confirm_registration(connect_db, check_existence_and_delete_email, email):
+def test_confirm_registration(
+        connect_db, check_existence_and_delete_email, email, delete_session
+):
     with allure.step('Send request to create user'):
         base_method.post_request_create_user(
             f'{email}', test_data.USERNAME, test_data.PASSWORD
@@ -139,9 +141,5 @@ def test_confirm_registration(connect_db, check_existence_and_delete_email, emai
         base_method.get_request_confirm_registration(f'{email}')
     with allure.step('Send a login request'):
         response = base_method.post_request_authentication(f'{email}', test_data.PASSWORD)
-        response_user_data = response.json()
-        user_id = response_user_data['userDto']['id']
     with allure.step('Check status code'):
         assert response.status_code == 200
-    with allure.step('Delete session'):
-        base_method.delete_session(connect_db, user_id)

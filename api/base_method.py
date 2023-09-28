@@ -44,8 +44,3 @@ def post_request_authentication(email, password):
     )
     return request
 
-
-def delete_session(connect_db, user_id):
-    curs = connect_db.cursor()
-    curs.execute(f"delete from sessions where user_id = '{user_id}'")
-    connect_db.commit()

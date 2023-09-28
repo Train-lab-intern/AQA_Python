@@ -9,7 +9,7 @@ VALID_EMAIL = [
     'test.trainlab@gmail1234567890.com', 'test-trainlab@gmail.com', 'test.trainlab@gmail-mail.com',
     'test.trainlab@gmail.com', 'test_trainlab@gmail.com', 'test.trainlab@gmail.com.com',
     'test$trainlab@gmail.com', 'test#trainlab@gmail.com', 'test%trainlab@gmail.com',
-    'test&trainlab@gmail.com', 'test*trainlab@gmail.com', 'test‘trainlab@gmail.com'
+    'test&trainlab@gmail.com', 'test*trainlab@gmail.com', 'test‘trainlab@gmail.com',
     'test/trainlab@gmail.com', 'test=trainlab@gmail.com', 'test^trainlab@gmail.com',
     'test?trainlab@gmail.com', 'test`trainlab@gmail.com', 'test{trainlab}@gmail.com',
     'test|trainlab@gmail.com', 'test~trainlab@gmail.com', 'b@gmail.com', 'ab@gmail.com',
@@ -47,8 +47,8 @@ INVALID_PASSWORD = [
     '90qertyooasdfghkozxvbnmqeryoadfhjkzxcvbnmasdfghk'
     'qetyuiizsdfghjjkjzxcderfvtgbyhnqazwsx1234567890qw'
     'ertyuioasdgghjklzxcvbnmmececfvrvtgbhbybcedxwsxwdce'
-    'fvrgtbrcexwxexrgvtvhbrcfed', 'QAZ12345', 'Qaz12345`',
-    'Qaz12345,<.>/?;:~!@#$%^&*()_-+=|'
+    'fvrgtbrcexwxexrgvtvhbrcfed', 'QAZ12345',
+    'Qaz12345,<.>/?;:~!@#$%^&*()_-+=|`'
 ]
 
 USERNAMES = [
