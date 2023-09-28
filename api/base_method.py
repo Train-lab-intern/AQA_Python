@@ -43,4 +43,3 @@ def post_request_authentication(email, password):
         'POST', BASE_URL + authentication_url, data=data, headers=headers, timeout=20
     )
     return request
-
