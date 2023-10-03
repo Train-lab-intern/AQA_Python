@@ -1,10 +1,12 @@
 EMAIL = 'test.trainlab@gmail.com'
 
+NON_EXISTENT_EMAIL = 'test.trainlab12345@gmail.com'
+
 PASSWORD = 'Qaz12345'
 
 EMPTY_FIELD = ''
 
-VALID_EMAIL = [
+VALID_EMAILS = [
     'test.trainlab@gmail.com', 'TEST.TRAINLAB@GMAIL.COM', 'test.trainlab+1234567890@gmail.com',
     'test.trainlab@gmail1234567890.com', 'test-trainlab@gmail.com', 'test.trainlab@gmail-mail.com',
     'test.trainlab@gmail.com', 'test_trainlab@gmail.com', 'test.trainlab@gmail.com.com',
@@ -22,7 +24,7 @@ VALID_EMAIL = [
     '_far_That_showst_the_darkness_thou_canst_not_dispel_How_like_art_thou_to_joy_rememberd'
     '_well_What_is_this_life_if_ful_of_care_We_have_no_time_to_stand_and_stare@gmail.com']
 
-INVALID_EMAIL = [
+INVALID_EMAILS = [
     'test.trainlabgmail.com', 'test.trainlab@gmailcom', 'тест.траинлаб@gmailcom', '', '     ',
     '.test.trainlab@gmail.com', 'test.trainlab@gmail.com.', 'test..trainlab@gmail.com',
     'test trainlab@gmail.com', 'test.trainlab@gm ail.com', '@gmailcom',
