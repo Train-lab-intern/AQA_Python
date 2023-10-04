@@ -6,7 +6,6 @@ class Registration(BaseMethod):
 
     def __init__(self, email, username, password):
         super().__init__()
-        self.confirm_response = None
         self.response = None
         self.email = email
         self.username = username
