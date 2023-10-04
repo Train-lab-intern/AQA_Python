@@ -42,7 +42,8 @@ def test_authentication_with_incorrect_login_and_incorrect_password(
 
 @allure.feature('Authentication')
 @allure.story('Authentication with incorrect email')
-@pytest.mark.parametrize('login', ['', 'testtrainlab@gmail.com', '      ', '   test.trainlab@gmail.com',
+@pytest.mark.parametrize('login', ['', 'testtrainlab@gmail.com', '      ',
+                                   '   test.trainlab@gmail.com',
                                    'test.trainlab@gmail.com     ', 'test.trainlabgmail.com',
                                    'test.trainlab@gmailcom', 'test.trainlab@gmail'])
 @pytest.mark.parametrize('email', [test_data.EMAIL])
