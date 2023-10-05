@@ -38,7 +38,7 @@ VALID_PASSWORD = [
     'thc1234567890123556790qertyooasdfghkozxvbnmqeryoadfhjkzxcvbnmasdfgh'
     'kqetyuiizsdfghjjkjzxcderfvtgbyhnqazwsx1234567890qwertyuioasdgghjklz'
     'xcvbnmmececfvrvtgbhbybcedxwsxwdcefvrgtbrcexwxexrgvtvhbrcfe',
-    'Qaz12345', '12345azQ', '123Q45we'
+    'Qaz12345', '12345azQ', '123Q45we', 'Qaz12345,<.>/?;:~!@#$%^&*()_-+=|`'
 ]
 
 INVALID_PASSWORD = [
@@ -49,8 +49,7 @@ INVALID_PASSWORD = [
     '90qertyooasdfghkozxvbnmqeryoadfhjkzxcvbnmasdfghk'
     'qetyuiizsdfghjjkjzxcderfvtgbyhnqazwsx1234567890qw'
     'ertyuioasdgghjklzxcvbnmmececfvrvtgbhbybcedxwsxwdce'
-    'fvrgtbrcexwxexrgvtvhbrcfed', 'QAZ12345',
-    'Qaz12345,<.>/?;:~!@#$%^&*()_-+=|`'
+    'fvrgtbrcexwxexrgvtvhbrcfed', 'QAZ12345'
 ]
 
 USERNAMES = [
