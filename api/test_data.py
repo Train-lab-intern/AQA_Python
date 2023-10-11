@@ -1,6 +1,10 @@
 EMAIL = 'test.trainlab@gmail.com'
 
+LOGINS = ['test.trainlab@gmail.com', 'TEST.TRAINLAB@GMAIL.COM', 'Test.TraiNlab@gmail.com']
+
 NON_EXISTENT_EMAIL = 'test.trainlab12345@gmail.com'
+
+NON_EXISTENT_PASSWORD = 'Qaz123456789'
 
 PASSWORD = 'Qaz12345'
 

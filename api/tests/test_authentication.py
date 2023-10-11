@@ -7,9 +7,7 @@ from api import test_data
 
 @allure.feature('Authentication')
 @allure.story('Authentication with valid email and password')
-@pytest.mark.parametrize('login', [
-    'test.trainlab@gmail.com', 'TEST.TRAINLAB@GMAIL.COM', 'Test.TraiNlab@gmail.com'
-])
+@pytest.mark.parametrize('login', [test_data.LOGINS])
 @pytest.mark.parametrize('email', [test_data.EMAIL])
 def test_authentication_with_valid_email_and_password(
         connect_db, email, check_existence_and_delete_email, login, delete_session
@@ -25,7 +23,7 @@ def test_authentication_with_valid_email_and_password(
 @allure.feature('Authentication')
 @allure.story('Authentication with incorrect login and incorrect password')
 @pytest.mark.parametrize('login', [test_data.EMPTY_FIELD, test_data.NON_EXISTENT_EMAIL])
-@pytest.mark.parametrize('password', [test_data.INVALID_PASSWORD])
+@pytest.mark.parametrize('password', [test_data.EMPTY_FIELD, test_data.NON_EXISTENT_PASSWORD])
 @pytest.mark.parametrize('email', [test_data.EMAIL])
 def test_authentication_with_incorrect_login_and_incorrect_password(
         connect_db, email, check_existence_and_delete_email, login, password
@@ -42,10 +40,7 @@ def test_authentication_with_incorrect_login_and_incorrect_password(
 
 @allure.feature('Authentication')
 @allure.story('Authentication with incorrect email')
-@pytest.mark.parametrize('login', ['', 'testtrainlab@gmail.com', '      ',
-                                   '   test.trainlab@gmail.com',
-                                   'test.trainlab@gmail.com     ', 'test.trainlabgmail.com',
-                                   'test.trainlab@gmailcom', 'test.trainlab@gmail'])
+@pytest.mark.parametrize('login', [test_data.EMPTY_FIELD, test_data.NON_EXISTENT_EMAIL])
 @pytest.mark.parametrize('email', [test_data.EMAIL])
 def test_authentication_with_incorrect_email(
         connect_db, email, check_existence_and_delete_email, login
@@ -62,7 +57,7 @@ def test_authentication_with_incorrect_email(
 
 @allure.feature('Authentication')
 @allure.story('Authentication with incorrect password')
-@pytest.mark.parametrize('password', [test_data.EMPTY_FIELD, 'Q12345', '123456qw', '123456QW'])
+@pytest.mark.parametrize('password', [test_data.EMPTY_FIELD, test_data.NON_EXISTENT_PASSWORD])
 @pytest.mark.parametrize('email', [test_data.EMAIL])
 def test_authentication_with_incorrect_password(
         connect_db, email, check_existence_and_delete_email, password
