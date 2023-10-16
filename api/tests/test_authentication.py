@@ -2,7 +2,7 @@ import pytest
 import allure
 from api.endpoint.registration import Registration
 from api.endpoint.authentication import Authentication
-from api import test_data
+import test_data
 
 
 @allure.feature('Authentication')
