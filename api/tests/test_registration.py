@@ -1,7 +1,7 @@
 import pytest
 import allure
 from api.endpoint.registration import Registration
-from api import test_data
+import test_data
 
 
 @allure.feature('Registration')
