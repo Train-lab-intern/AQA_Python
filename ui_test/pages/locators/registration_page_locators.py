@@ -1,0 +1,16 @@
+from selenium.webdriver.common.by import By
+
+logo = (By.CSS_SELECTOR, 'img[alt="Logo"]')
+welcome_text = (By.CSS_SELECTOR, 'h1[style="text-align: center;"]')
+email_field = (By.CSS_SELECTOR, 'input[name="email"]')
+login_field = (By.CSS_SELECTOR, 'input[name="username"]')
+message_field = (By.CSS_SELECTOR, '.Registration_row__54uaa.row .Registration_errors__ySskW')
+password_field = (By.CSS_SELECTOR, 'input[name="password"]')
+confirm_password_field = (By.CSS_SELECTOR, 'input[name="passwordConfirm"]')
+register_button = (By.CSS_SELECTOR, 'button[type="submit"]')
+password_view_icon = (By.CSS_SELECTOR, 'img[alt="icon"]')
+text_questions = (By.CSS_SELECTOR, '.Registration_textAccaunt__EHCVP.col')
+login_link = (By.CSS_SELECTOR, 'a[href="/auth"]')
+ask_us_link = (By.CSS_SELECTOR, 'a[href="#"]')
+data_processing_conditions = (By.CSS_SELECTOR, '.Registration_row__54uaa.row p')
+pop_up_window = (By.XPATH, '//div[@class="Notifications_wrapper__EHJBh"]/div[1]/span')

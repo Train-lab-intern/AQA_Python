@@ -9,9 +9,34 @@ import database_connection
 
 
 @pytest.fixture(scope='function')
+def delete_session(connect_db, email):
+    yield
+    curs = connect_db.cursor()
+    curs.execute(f"select id from users where email = '{email}';")
+    user_id = curs.fetchall()
+    user_id = user_id[0][0]
+    curs.execute(f"delete from sessions where user_id = '{user_id}'")
+    connect_db.commit()
+
+
+@pytest.fixture(scope='function')
+def check_existence_and_delete_email(connect_db, email):
+    curs = connect_db.cursor()
+    curs.execute(f"select email from users where email = '{email}';")
+    user = curs.fetchall()
+    if user != '':
+        curs.execute(f"delete from users where email = '{email}';")
+        connect_db.commit()
+    yield
+    curs = connect_db.cursor()
+    curs.execute(f"delete from users where email = '{email}';")
+    connect_db.commit()
+
+
+@pytest.fixture(scope='function')
 def driver(browser_options, host_options):
     if browser_options == 'ff' and host_options == 'server':
-        with allure.step(f'Rune Firefox and {host_options}'):
+        with allure.step(f'Run Firefox and {host_options}'):
             options = Options_ff()
             options.add_argument("--headless")
             options.add_argument("--disable-gpu")
@@ -19,12 +44,12 @@ def driver(browser_options, host_options):
             driver_browser = webdriver.Firefox(options=options)
 
     elif browser_options == 'ff':
-        with allure.step('Rune Firefox'):
+        with allure.step('Run Firefox'):
             driver_browser = webdriver.Firefox()
             driver_browser.maximize_window()
 
     elif host_options == 'server':
-        with allure.step(f'Rune Chrome with {host_options}'):
+        with allure.step(f'Run Chrome with {host_options}'):
             options = Options_chrome()
             options.add_argument("--headless")
             options.add_argument("--disable-gpu")
@@ -32,7 +57,7 @@ def driver(browser_options, host_options):
             driver_browser = webdriver.Chrome(options=options)
 
     else:
-        with allure.step('Rune Chrome'):
+        with allure.step('Run Chrome'):
             driver_browser = webdriver.Chrome()
             driver_browser.maximize_window()
     driver_browser.implicitly_wait(10)
@@ -51,9 +76,8 @@ def connect_db(host_options):
                 password=database_connection.password,
                 database=database_connection.database
             )
-            curs = con.cursor()
-            yield curs
-            curs.close()
+            yield con
+            con.close()
 
     else:
         with allure.step(f'Run a database connection from {host_options}'):
@@ -72,9 +96,8 @@ def connect_db(host_options):
                     password=database_connection.password,
                     database=database_connection.database
                 )
-                curs = con.cursor()
-                yield curs
-                curs.close()
+                yield con
+                con.close()
                 server.close()
 
 
