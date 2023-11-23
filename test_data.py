@@ -10,10 +10,10 @@ EMPTY_FIELD = ''
 
 INVALID_EMAIL = '@gmail.com'
 
-EMAIL_257_CHARACTERS = ('test.trainlab+Sun_of_the_sleepless_Melancholy_star_Whose_tearful_beam_glows'
-                        '_tremulously_far_That_showst_the_darkness_thou_canst_not_dispel_How_like_art'
-                        '_thou_to_joy_rememberd_well_What_is_this_life_if_ful_of_care_We_have_no_time_'
-                        'to_stand_and_stare1@gmail.com')
+EMAIL_257_CHARACTERS = ('test.trainlab+Sun_of_the_sleepless_Melancholy_star_Whose_tearful_beam'
+                        '_glows_tremulously_far_That_showst_the_darkness_thou_canst_not_dispel'
+                        '_How_like_art_thou_to_joy_rememberd_well_What_is_this_life_if_ful_of_'
+                        'care_We_have_no_time_to_stand_and_stare1@gmail.com')
 
 VALID_EMAILS = [
     'test.trainlab@gmail.com', 'TEST.TRAINLAB@GMAIL.COM', 'test.trainlab+1234567890@gmail.com',
@@ -53,10 +53,10 @@ INVALID_PASSWORD = [
     'Qaz1234', 'QAZ12345'
 ]
 
-PASSWORD_257_CHARACTERS = ('Qaz1234567890123456789012345678901234567890123456789xexexcefcrgvthc12345678'
-                           '90123556790qertyooasdfghkozxvbnmqeryoadfhjkzxcvbnmasdfghkqetyuiizsdfghjjkjzxcd'
-                           'erfvtgbyhnqazwsx1234567890qwertyuioasdgghjklzxcvbnmmececfvrvtgbhbybcedxwsxwdcef'
-                           'vrgtbrcexwxexrgvtvhbrcfed')
+PASSWORD_257_CHARACTERS = ('Qaz1234567890123456789012345678901234567890123456789xexexcefcrgvthc'
+                           '1234567890123556790qertyooasdfghkozxvbnmqeryoadfhjkzxcvbnmasdfghkqe'
+                           'tyuiizsdfghjjkjzxcderfvtgbyhnqazwsx1234567890qwertyuioasdgghjklzxcv'
+                           'bnmmececfvrvtgbhbybcedxwsxwdcefvrgtbrcexwxexrgvtvhbrcfed')
 
 USERNAMES = [
     'VASIA', 'vasia', '1vasia', 'Vasia,./<>?:;|{}[]~`!@#$%^&*()_+=-', '', '   '
