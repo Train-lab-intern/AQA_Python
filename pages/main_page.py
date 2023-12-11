@@ -6,9 +6,6 @@ from data.urls import MAIN_PAGE, LINKEDIN_PAGE, GITHUB_PAGE
 
 class MainPage(BasePage):
 
-    def open_main_page(self):
-        self.driver.get(MAIN_PAGE)
-
     def logo_visibility(self):
         logo = self.driver.find_element(*MainPageLocators.LOGO)
         assert logo.is_displayed()

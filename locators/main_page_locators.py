@@ -9,3 +9,4 @@ class MainPageLocators:
     TASKS_BUTTON = (By.XPATH, '//*[@id="basic-navbar-nav"]/div[1]/a[2]/button')
     REG_BUTTON = (By.CSS_SELECTOR, "[href='/auth']")
     TOOLTIP_O_NAS = (By.XPATH, '//*[@id="basic-navbar-nav"]/div[1]/a[1]')
+    HEADER_BUTTONS = [ABOUT_US_BUTTON, TASKS_BUTTON, REG_BUTTON]
