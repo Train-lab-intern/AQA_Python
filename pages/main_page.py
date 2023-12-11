@@ -1,6 +1,6 @@
 from pages.base_page import BasePage
 from locators.main_page_locators import MainPageLocators
-from data.urls import MAIN_PAGE, LINKEDIN_PAGE, GITHUB_PAGE
+from data.urls import LINKEDIN_PAGE, GITHUB_PAGE
 
 
 
