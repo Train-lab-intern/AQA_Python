@@ -38,6 +38,7 @@ def test_linkedin_redirection(driver):
     page.open_main_page()
     page.check_linkedin_redirection()
 
+
 def test_github_redirection(driver):
     page = MainPage(driver)
     page.open_main_page()
