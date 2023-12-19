@@ -1,6 +1,4 @@
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver import ActionChains
-from selenium.webdriver.support.wait import WebDriverWait
+
 
 
 class BasePage:
@@ -12,18 +10,19 @@ class BasePage:
     def open(self):
         self.driver.get(self.link)
 
-    def hover_over_element(self, locator):
-        element = self.driver.find_element(*locator)
-        action = ActionChains(self.driver)
-        action.move_to_element(element)
-        action.perform()
+    def find_element(self, locator):
+        return self.driver.find_element(*locator)
 
-    def is_element_clickable_after_hover(self, locator, timeout=5):
-        self.hover_over_element(locator)
-        return WebDriverWait(self.driver, timeout).until(EC.element_to_be_clickable(locator))
+    def check_element_visibility(self, locator):
+        element = self.find_element(locator)
+        assert element.is_displayed()
+
+    def check_element_clickability(self, locator):
+        element = self.find_element(locator)
+        assert element.is_enabled()
 
     def find_element_and_click(self, locator):
-        self.driver.find_element(*locator).click()
+        self.find_element(locator).click()
 
     def assert_current_url(self, expected_url):
         current_url = self.driver.current_url

@@ -7,8 +7,7 @@ from data.urls import LINKEDIN_PAGE, GITHUB_PAGE
 class MainPage(BasePage):
 
     def logo_visibility(self):
-        logo = self.driver.find_element(*MainPageLocators.LOGO)
-        assert logo.is_displayed()
+        self.check_element_visibility(MainPageLocators.LOGO)
 
     def check_linkedin_redirection(self):
         self.find_element_and_click(MainPageLocators.LINKEDIN_LINK)

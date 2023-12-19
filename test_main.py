@@ -1,12 +1,12 @@
 import pytest
 from pages.main_page import MainPage
 from locators.main_page_locators import MainPageLocators
-from data.urls import MAIN_PAGE
+from data.urls import MAIN_PAGE, MAIN_PAGE_TEST
 
 
 # Header tests
 def test_check_logo_visibility(driver):
-    page = MainPage(driver, MAIN_PAGE)
+    page = MainPage(driver, MAIN_PAGE_TEST)
     page.open()
     page.logo_visibility()
 
@@ -15,9 +15,7 @@ def test_check_logo_visibility(driver):
 def test_check_header_buttons_clickability(driver, button):
     page = MainPage(driver, MAIN_PAGE)
     page.open()
-    page.hover_over_element(button)
-    page.is_element_clickable_after_hover(button)
-
+    page.check_element_clickability(button)
 
 # Footer tests
 @pytest.mark.xfail
