@@ -66,7 +66,7 @@ def driver(browser_options, host_options):
 
 @pytest.fixture(scope='function')
 def connect_db(host_options):
-    with allure.step(f'Run a database connection'):
+    with allure.step('Run a database connection'):
         con = psycopg2.connect(
             host=database_connection.host,
             port=database_connection.port,
