@@ -1,10 +1,12 @@
 from pages.base_page import BasePage
 from locators.main_page_locators import MainPageLocators
-from data.urls import LINKEDIN_PAGE, GITHUB_PAGE
-
+from data.urls import LINKEDIN_PAGE, GITHUB_PAGE, MAIN_PAGE
 
 
 class MainPage(BasePage):
+
+    def __init__(self, driver):
+        super().__init__(driver, MAIN_PAGE)
 
     def logo_visibility(self):
         self.check_element_visibility(MainPageLocators.LOGO)

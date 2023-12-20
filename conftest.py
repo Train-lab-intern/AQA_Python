@@ -6,6 +6,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options as Options_chrome
 from selenium.webdriver.firefox.options import Options as Options_ff
 import database_connection
+from pages.main_page import MainPage
 
 
 @pytest.fixture(scope='function')
