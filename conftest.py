@@ -1,7 +1,6 @@
 import pytest
 import allure
 import psycopg2
-from sshtunnel import SSHTunnelForwarder
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options as Options_chrome
 from selenium.webdriver.firefox.options import Options as Options_ff
@@ -67,38 +66,16 @@ def driver(browser_options, host_options):
 
 @pytest.fixture(scope='function')
 def connect_db(host_options):
-    if host_options == 'server':
-        with allure.step(f'Run a database connection from {host_options}'):
-            con = psycopg2.connect(
-                host=database_connection.host,
-                port=database_connection.port,
-                user=database_connection.username,
-                password=database_connection.password,
-                database=database_connection.database
-            )
-            yield con
-            con.close()
-
-    else:
-        with allure.step(f'Run a database connection from {host_options}'):
-            with SSHTunnelForwarder(
-                    (database_connection.server_ip, database_connection.ssh_port),
-                    ssh_username=database_connection.ssh_username,
-                    ssh_private_key=database_connection.ssh_private_key,
-                    remote_bind_address=(
-                            database_connection.host,
-                            database_connection.port)) as server:
-                server.start()
-                con = psycopg2.connect(
-                    host='localhost',
-                    port=server.local_bind_port,
-                    user=database_connection.username,
-                    password=database_connection.password,
-                    database=database_connection.database
-                )
-                yield con
-                con.close()
-                server.close()
+    with allure.step(f'Run a database connection'):
+        con = psycopg2.connect(
+            host=database_connection.host,
+            port=database_connection.port,
+            user=database_connection.username,
+            password=database_connection.password,
+            database=database_connection.database
+        )
+        yield con
+        con.close()
 
 
 def pytest_addoption(parser):
