@@ -15,7 +15,7 @@ VALID_EMAILS = [
     'test$trainlab@gmail.com', 'test#trainlab@gmail.com', 'test%trainlab@gmail.com',
     'test&trainlab@gmail.com', 'test*trainlab@gmail.com', 'test`trainlab@gmail.com',
     'test/trainlab@gmail.com', 'test=trainlab@gmail.com', 'test^trainlab@gmail.com',
-    'test?trainlab@gmail.com', 'test{trainlab}@gmail.com',
+    'test?trainlab@gmail.com', 'test{trainlab}@gmail.com', 'test!trainlab@gmail.com'
     'test|trainlab@gmail.com', 'test~trainlab@gmail.com', 'b@gmail.com', 'ab@gmail.com',
     'a@ya.ru', 'Test.TraiNlab@gmail.com',
     'test.trainlab+Sun_of_the_sleepless_Melancholy_star_Whose_tearful_beam_'
