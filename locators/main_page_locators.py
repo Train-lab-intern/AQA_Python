@@ -9,4 +9,3 @@ class MainPageLocators:
     TASKS_BUTTON = (By.CSS_SELECTOR, '[class="Navigation_link__Jlf0e active"]:nth-of-type(2)')
     REG_BUTTON = (By.CSS_SELECTOR, "[href='/auth']")
     HEADER_BUTTONS = [ABOUT_US_BUTTON, TASKS_BUTTON, REG_BUTTON]
-
