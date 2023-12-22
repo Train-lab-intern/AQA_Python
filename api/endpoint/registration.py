@@ -4,18 +4,17 @@ from api.endpoint.base_method import BaseMethod
 
 class Registration(BaseMethod):
 
-    def __init__(self, email, username, password):
+    def __init__(self, email, password):
         super().__init__()
         self.confirm_response = None
         self.response = None
         self.email = email
-        self.username = username
         self.password = password
 
     def create_new_user(self):
         with allure.step('Send request to create user'):
             self.response = self.post_request_create_user(
-                self.email, self.username, self.password
+                self.email, self.password
             )
             return self.response
 
@@ -65,8 +64,3 @@ class Registration(BaseMethod):
     def returned_400(self):
         with allure.step('Check status code 400'):
             return self.response.status_code == 400
-
-    def confirm_registration(self, email):
-        with allure.step('Send request confirm registration'):
-            self.response = self.get_request_confirm_registration(email)
-            return self.response
