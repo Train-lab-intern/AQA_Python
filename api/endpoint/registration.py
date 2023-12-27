@@ -43,7 +43,7 @@ class Registration(BaseMethod):
         with allure.step('Check response message'):
             response_data = self.response.json()
             message = response_data['message']
-            return message == 'Email and password fields are required'
+            return message == 'Email and password fields are required.'
 
     def returned_message_email_must_be_between_8_and_256_characters(self):
         with allure.step('Check response message'):
