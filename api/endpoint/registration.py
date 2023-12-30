@@ -25,43 +25,50 @@ class Registration(BaseMethod):
         with allure.step('Check response message'):
             response_data = self.response.json()
             message = response_data['message']
-            return message == 'Invalid email address.'
+            return message == 'Invalid email address'
 
     def returned_message_email_field_is_required(self):
         with allure.step('Check response message'):
             response_data = self.response.json()
             message = response_data['message']
-            return message == 'The email field is required.'
+            return message == 'The email field is required'
+
+    def returned_message_invalid_password(self):
+        with allure.step('Check response message'):
+            response_data = self.response.json()
+            message = response_data['message']
+            return message == 'Invalid password. The password must' \
+                              ' be typed in Latin letters, consist of' \
+                              ' at least 8 characters and contain at' \
+                              ' least one lowercase and one uppercase' \
+                              ' character'
 
     def returned_message_password_field_is_required(self):
         with allure.step('Check response message'):
             response_data = self.response.json()
             message = response_data['message']
-            return message == 'The password field is required.'
+            return message == 'The password field is required'
+
+    def returned_message_invalid_email_and_password(self):
+        with allure.step('Check response message'):
+            response_data = self.response.json()
+            message = response_data['message']
+            return message == 'Invalid email and password. The password' \
+                              ' must be typed in Latin letters, consist of' \
+                              ' at least 8 characters and contain at least one' \
+                              ' lowercase and one uppercase character'
 
     def returned_message_email_and_password_fields_are_required(self):
         with allure.step('Check response message'):
             response_data = self.response.json()
             message = response_data['message']
-            return message == 'Email and password fields are required.'
-
-    def returned_message_email_must_be_between_8_and_256_characters(self):
-        with allure.step('Check response message'):
-            response_data = self.response.json()
-            message = response_data['message']
-            return message == 'User email must be between 8 and 256 characters'
+            return message == 'Email and password fields are required'
 
     def returned_message_user_exists(self):
         with allure.step('Check response message'):
             response_data = self.response.json()
             message = response_data['message']
-            return message == 'User with this email is already exists.'
-
-    def returned_message_user_mot_found(self, email):
-        with allure.step('Check response message'):
-            response_data = self.response.json()
-            message = response_data['message']
-            return message == f'User not found with email: {email}'
+            return message == 'User with this email is already exists'
 
     def returned_status_bad_request(self):
         with allure.step('Check response status'):

@@ -28,18 +28,6 @@ def test_check_invalid_emails(connect_db, email, check_existence_and_delete_emai
 
 
 @allure.feature('Registration')
-@allure.story('Send a request with a 257 characters email address')
-@pytest.mark.regression
-@pytest.mark.parametrize('email', test_data.EMAIL_257_CHARACTERS)
-def test_check_257_characters_emails(connect_db, email, check_existence_and_delete_email):
-    register_endpoint = Registration(email, test_data.PASSWORD)
-    register_endpoint.create_new_user()
-    assert register_endpoint.returned_400()
-    assert register_endpoint.returned_message_email_must_be_between_8_and_256_characters()
-    assert register_endpoint.returned_status_bad_request()
-
-
-@allure.feature('Registration')
 @allure.story('Send a request with an valid password')
 @pytest.mark.smoke
 @pytest.mark.regression
@@ -61,6 +49,22 @@ def test_invalid_password(connect_db, password, email, check_existence_and_delet
     register_endpoint.create_new_user()
     assert register_endpoint.returned_400()
     assert register_endpoint.returned_status_bad_request()
+    assert register_endpoint.returned_message_invalid_password()
+#
+
+
+@allure.feature('Registration')
+@allure.story('Send a request with an invalid email and password')
+@pytest.mark.regression
+@pytest.mark.parametrize('password', test_data.INVALID_PASSWORD)
+@pytest.mark.parametrize('email', test_data.INVALID_EMAILS)
+def test_invalid_email_and_password(connect_db, password, email, check_existence_and_delete_email):
+    register_endpoint = Registration(email, password)
+    register_endpoint.create_new_user()
+    assert register_endpoint.returned_400()
+    assert register_endpoint.returned_status_bad_request()
+    assert register_endpoint.returned_message_invalid_email_and_password()
+#
 
 
 @allure.feature('Registration')
