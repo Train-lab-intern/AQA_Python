@@ -8,7 +8,6 @@ class BaseMethod:
     def __init__(self):
         self.base_url = settings.BASE_URL
         self.register_user = settings.REGISTER_USER
-        self.complete_registration = settings.COMPLETE_REGISTRATION
         self.authentication_url = settings.AUTHENTICATION_URL
 
     def post_request_create_user(self, email, password):
