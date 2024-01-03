@@ -11,7 +11,7 @@ SPACES = '         '
 VALID_EMAILS = [
     'test.trainlab@gmail.com', 'TEST.TRAINLAB@GMAIL.COM', 'test.trainlab+1234567890@gmail.com',
     'test.trainlab@gmail1234567890.com', 'test-trainlab@gmail.com', 'test.trainlab@gmail-mail.com',
-    'test.trainlab@gmail.com', 'test_trainlab@gmail.com', 'test.trainlab@gmail.com.com',
+    'test_trainlab@gmail.com', 'test.trainlab@gmail.com.com',
     'test$trainlab@gmail.com', 'test#trainlab@gmail.com', 'test%trainlab@gmail.com',
     'test&trainlab@gmail.com', 'test*trainlab@gmail.com', 'test`trainlab@gmail.com',
     'test/trainlab@gmail.com', 'test=trainlab@gmail.com', 'test^trainlab@gmail.com',
