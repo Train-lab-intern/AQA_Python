@@ -12,7 +12,7 @@ import test_data
 def test_check_valid_emails(connect_db, email, check_existence_and_delete_email):
     register_endpoint = Registration(email, test_data.PASSWORD)
     register_endpoint.create_new_user()
-    assert register_endpoint.returned_200()
+    assert register_endpoint.returned_201()
 
 
 @allure.feature('Registration')
@@ -36,7 +36,7 @@ def test_check_invalid_emails(connect_db, email, check_existence_and_delete_emai
 def test_valid_password(connect_db, password, email, check_existence_and_delete_email):
     register_endpoint = Registration(email, password)
     register_endpoint.create_new_user()
-    assert register_endpoint.returned_200()
+    assert register_endpoint.returned_201()
 
 
 @allure.feature('Registration')

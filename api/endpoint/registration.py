@@ -17,9 +17,9 @@ class Registration(BaseMethod):
             )
             return self.response
 
-    def returned_200(self):
+    def returned_201(self):
         with allure.step('Check status code 200'):
-            return self.response.status_code == 200
+            return self.response.status_code == 201
 
     def returned_message_invalid_email_address(self):
         with allure.step('Check response message'):
