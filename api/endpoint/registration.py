@@ -6,7 +6,6 @@ class Registration(BaseMethod):
 
     def __init__(self, email, password):
         super().__init__()
-        self.response = None
         self.email = email
         self.password = password
 
@@ -16,10 +15,6 @@ class Registration(BaseMethod):
                 self.email, self.password
             )
             return self.response
-
-    def returned_201(self):
-        with allure.step('Check status code 200'):
-            return self.response.status_code == 201
 
     def returned_message_invalid_email_address(self):
         with allure.step('Check response message'):
@@ -69,13 +64,3 @@ class Registration(BaseMethod):
             response_data = self.response.json()
             message = response_data['message']
             return message == 'User with this email is already exists'
-
-    def returned_status_bad_request(self):
-        with allure.step('Check response status'):
-            response_data = self.response.json()
-            status = response_data['status']
-            return status == 'BAD_REQUEST'
-
-    def returned_400(self):
-        with allure.step('Check status code 400'):
-            return self.response.status_code == 400

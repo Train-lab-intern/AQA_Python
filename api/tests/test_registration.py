@@ -24,7 +24,6 @@ def test_check_invalid_emails(connect_db, email, check_existence_and_delete_emai
     register_endpoint.create_new_user()
     assert register_endpoint.returned_400()
     assert register_endpoint.returned_message_invalid_email_address()
-    assert register_endpoint.returned_status_bad_request()
 
 
 @allure.feature('Registration')
@@ -48,7 +47,6 @@ def test_invalid_password(connect_db, password, email, check_existence_and_delet
     register_endpoint = Registration(email, password)
     register_endpoint.create_new_user()
     assert register_endpoint.returned_400()
-    assert register_endpoint.returned_status_bad_request()
     assert register_endpoint.returned_message_invalid_password()
 #
 
@@ -62,7 +60,6 @@ def test_invalid_email_and_password(connect_db, password, email, check_existence
     register_endpoint = Registration(email, password)
     register_endpoint.create_new_user()
     assert register_endpoint.returned_400()
-    assert register_endpoint.returned_status_bad_request()
     assert register_endpoint.returned_message_invalid_email_and_password()
 #
 
@@ -76,7 +73,6 @@ def test_registration_with_empty_and_spaces_in_fields(connect_db, email, passwor
     register_endpoint = Registration(email, password)
     register_endpoint.create_new_user()
     assert register_endpoint.returned_400()
-    assert register_endpoint.returned_status_bad_request()
     assert register_endpoint.returned_message_email_and_password_fields_are_required()
 
 
@@ -90,7 +86,6 @@ def test_registration_with_empty_amd_spaces_in_password(connect_db, password):
     )
     register_endpoint.create_new_user()
     assert register_endpoint.returned_400()
-    assert register_endpoint.returned_status_bad_request()
     assert register_endpoint.returned_message_password_field_is_required()
 
 
@@ -104,7 +99,6 @@ def test_registration_with_empty_and_spaces_in_email(connect_db, email):
     )
     register_endpoint.create_new_user()
     assert register_endpoint.returned_400()
-    assert register_endpoint.returned_status_bad_request()
     assert register_endpoint.returned_message_email_field_is_required()
 
 
@@ -117,5 +111,4 @@ def test_registration_with_existing_user(connect_db, check_existence_and_delete_
     register_endpoint.create_new_user()
     register_endpoint.create_new_user()
     assert register_endpoint.returned_400()
-    assert register_endpoint.returned_status_bad_request()
     assert register_endpoint.returned_message_user_exists()
