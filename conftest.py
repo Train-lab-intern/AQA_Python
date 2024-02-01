@@ -8,6 +8,21 @@ import database_connection
 
 
 @pytest.fixture(scope='function')
+def check_existence_and_delete_email(connect_db, email):
+    curs = connect_db.cursor()
+    email = email.lower()
+    curs.execute(f"select email from users where email = '{email}';")
+    user = curs.fetchall()
+    if user != '':
+        curs.execute(f"delete from users where email = '{email}';")
+        connect_db.commit()
+    yield
+    curs = connect_db.cursor()
+    curs.execute(f"delete from users where email = '{email}';")
+    connect_db.commit()
+
+
+@pytest.fixture(scope='function')
 def driver(browser_options, host_options):
     if browser_options == 'ff' and host_options == 'server':
         with allure.step(f'Run Firefox and {host_options}'):
