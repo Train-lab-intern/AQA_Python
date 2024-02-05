@@ -44,3 +44,11 @@ class BaseMethod:
     def returned_201(self):
         with allure.step('Check status code 200'):
             return self.response.status_code == 201
+
+    def returned_200(self):
+        with allure.step('Check status code 200'):
+            return self.response.status_code == 200
+
+    def returned_401(self):
+        with allure.step('Check status code 401'):
+            return self.response.status_code == 401
