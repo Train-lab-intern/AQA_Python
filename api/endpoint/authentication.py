@@ -20,9 +20,3 @@ class Authentication(BaseMethod):
             response_data = self.response.json()
             message = response_data['message']
             return message == 'Invalid login or password'
-
-    def returned_message_invalid_data_format(self):
-        with allure.step('Check response message'):
-            response_data = self.response.json()
-            message = response_data['message']
-            return message == 'Bad credentials'
