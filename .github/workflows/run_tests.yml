@@ -1,0 +1,23 @@
+name: Automated tests
+
+on:
+  schedule:
+    - cron: '30 6 * * *'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: setup Python
+        run: sudo apt-get install python3
+      - name: check python version
+        run: python3 --version
+      - name: Install Chrome
+        run: sudo apt-get install google-chrome-stable
+      - name: install dependencies
+        run: pip install -r requirements.txt
+      - name: run tests
+        run: pytest --host=server
