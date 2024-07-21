@@ -11,9 +11,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
       - name: setup Python
-        uses: action/setup-python@v4
-        with:
-          python-version: "3.12"
+        run: sudo apt-get install python3
+      - name: check python version
+        run: python3 --version
       - name: Install Chrome
         run: sudo apt-get install google-chrome-stable
       - name: install dependencies
