@@ -70,7 +70,11 @@ jobs:
         run: pip install -r requirements.txt
       - name: Download all workflow run artifacts
         uses: actions/download-artifact@v3
-      - name: Create database_conection file
+      - name: PWD
+        run: pwd
+      - name: LS
+        run: ls
+      - name: Create database_connection file
         run: echo username = ${{ secrets.USERNAME }} > database_connection.py
       - run: echo password = ${{ secrets.PASSWORD }} >> database_connection.py
       - run: echo host = ${{ secrets.HOST }} >> database_connection.py
