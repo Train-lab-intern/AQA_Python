@@ -83,6 +83,8 @@ jobs:
       - run: echo port = ${{ secrets.PORT }} >> database_connection.py
       - run: echo database = ${{ secrets.DATABASE }} >> database_connection.py
       - run: echo server_ip = ${{ secrets.SERVER_IP }} >> database_connection.py
+      - name: Cat database_connection.py
+        run: cat database_connection.py
       - name: run tests
         run: pytest --host=server --alluredir=reports
         continue-on-error: true
