@@ -77,14 +77,12 @@ jobs:
       - name: LS
         run: ls
       - name: Create database_connection file
-        run: cat > database_connection.py
-      - run: username = "${{ secrets.USERNAME }}"\\'${{ secrets.PASSWORD }}'
-#        run: echo username = '${{ secrets.USERNAME }}' > database_connection.py
-#      - run: echo password = '${{ secrets.PASSWORD }}' >> database_connection.py
-#      - run: echo host = '${{ secrets.HOST }}' >> database_connection.py
-#      - run: echo port = ${{ secrets.PORT }} >> database_connection.py
-#      - run: echo database = '${{ secrets.DATABASE }}' >> database_connection.py
-#      - run: echo server_ip = '${{ secrets.SERVER_IP }}' >> database_connection.py
+        run: echo username = "${{ secrets.USERNAME }}" > database_connection.py
+      - run: echo password = "${{ secrets.PASSWORD }}" >> database_connection.py
+      - run: echo host = "${{ secrets.HOST }}" >> database_connection.py
+      - run: echo port = ${{ secrets.PORT }} >> database_connection.py
+      - run: echo database = "${{ secrets.DATABASE }}" >> database_connection.py
+      - run: echo server_ip = "${{ secrets.SERVER_IP }}" >> database_connection.py
       - name: Cat database_connection.py
         run: cat database_connection.py
       - name: run tests
