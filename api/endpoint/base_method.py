@@ -29,8 +29,8 @@ class BaseMethod:
             'Content-Type': 'application/json'
         }
         data = json.dumps({
-            "userEmail": f"{email}",
-            "userPassword": f"{password}"
+            "email": f"{email}",
+            "password": f"{password}"
         })
         request = requests.request(
             'POST', self.base_url + self.authentication_url, data=data, headers=headers, timeout=20
