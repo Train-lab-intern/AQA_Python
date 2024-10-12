@@ -29,7 +29,7 @@ jobs:
           https://api.github.com/repos/Train-lab-intern/aqa_python/actions/artifacts/$ARTIFACT_ID/zip 
           -o artifacts.zip 
     
-      - run: mkdir old_pages pages_history && unzip pages.zip -d old_pages && tar -xvf old_pages/artifact.tar -C pages_history
+    
       - run: cp pages_history/history/* reports && cp -r pages_history/history reports
       - name: Store allure history
         uses: actions/upload-artifact@v4
