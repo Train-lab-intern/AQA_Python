@@ -44,7 +44,7 @@ jobs:
       - run: ls -la
       - run: mkdir reports
       - run: ls -la
-      - run: unzip artifacts.zip -d reports
+      - run: sudo unzip artifacts.zip -d reports
       - run: mkdir old_pages pages_history && unzip pages.zip -d old_pages && tar -xvf old_pages/artifact.tar -C pages_history
       - run: cp pages_history/history/* reports && cp -r pages_history/history reports
       - name: Store allure history
