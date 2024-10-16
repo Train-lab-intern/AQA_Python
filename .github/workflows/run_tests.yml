@@ -42,6 +42,7 @@ jobs:
           https://api.github.com/repos/Train-lab-intern/aqa_python/actions/artifacts/$REPORT_ID/zip 
           -o pages.zip
       - run: ls -la
+      - run: cat artifacts.zip
       - run: mkdir reports
       - run: ls -la
       - run: 7z x artifacts.zip reports
